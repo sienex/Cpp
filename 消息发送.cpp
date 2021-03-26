@@ -5,7 +5,7 @@
 
 int main()
 {
-	HWND hwnd2 = FindWindow(L"TXGuiFoundation", L".");
+	HWND hwnd2 = FindWindow(L"TXGuiFoundation", L"sienex");
 	if (hwnd2 == NULL)return 0;
 
 	TCHAR text[256] = TEXT("123");
