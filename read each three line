@@ -1,0 +1,39 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+
+using namespace std;
+//读取txt里全部行字符串，每3行3行地进行打印
+int main()
+{
+	ifstream book;
+	const int nrol = 1; int i = 0; int k; int j;
+	char str[80];
+	char StrBook[100][80];
+	char c = 'y', name[] = "C:\\Users\\I\\Desktop\\1\\1.txt";
+
+	book.open(name);
+
+	while (book.getline(str, 80))
+	{
+		strcpy_s(StrBook[i++], str);
+	}
+
+	k = 0;
+	while (c != 'q')
+	{
+		system("cls");
+		for (j = 0; j < nrol && k < i; j++, k++)
+		{
+			cout << StrBook[k] << endl;
+		}
+		if (k >= i)
+		{
+			break;
+		}
+		cin.get() >> c;
+	}
+	book.close();
+	return 0;
+}
+
