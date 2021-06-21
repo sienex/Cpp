@@ -1,0 +1,92 @@
+/*用类存放数组，并输出最大最小值*/
+
+#include<iostream>
+
+using namespace std;
+
+class IntArray
+{
+	int *data;
+	int size;
+
+	public:
+		//void setArray(int len, int* in);
+		int Getsize();
+		int setValue(int pos, int Val);
+		int GetMaxVal();
+		int GetMinVal();
+		IntArray(int* a)
+		{
+			data = a;
+			size=5;
+		}
+};
+
+int IntArray::Getsize()
+{
+	return size;
+}
+
+int IntArray::setValue(int pos, int Val)
+{
+	if (pos<0 || (pos>size))return -1;
+	data[pos] = Val;
+	return 0;
+}
+
+int IntArray::GetMaxVal()
+{
+	int temp = data[0];
+	for (int i = 1; i < size; i++)
+	{
+		if (temp < data[i])
+		{
+			temp = data[i];
+		}
+	}
+	return temp;
+}
+
+int IntArray::GetMinVal()
+{
+	int temp = data[0];
+	for (int i = 1; i < size; i++)
+	{
+		if (temp > data[i])
+		{
+			temp = data[i];
+		}
+	}
+	return temp;
+}
+
+//void IntArray::setArray(int len, int* in)
+//{
+//	size = len;
+//	data = new int[len];
+//	for (int i = 0; i < size; i++)
+//	{
+//		data[i] = in[i];
+//	}
+//}
+
+
+int main()
+{
+	int size; int min, max;
+	int value; int in[] = { 1,2,3,4,5 };
+	IntArray array(in);
+	//array.setArray(5, in);
+	size = array.Getsize();
+	cout << "please input " << size << " number" << endl;
+	for (int i = 0; i < size; i++)
+	{
+		cin >> value;
+		array.setValue(i,value);
+	}
+	min = array.GetMinVal();
+	max = array.GetMaxVal();
+	cout << min << endl;
+	cout << max << endl;
+	return 0;
+}
